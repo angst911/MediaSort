@@ -23,6 +23,7 @@ This file serves as the foundational instruction context for future interactions
 - **`flatten_cleanup.py`**: Recursively deletes non-video companion files, flattens subdirectories under categories, preserves filenames, and cleans up empty folders.
 - **`deduplicate_exact.py`**: Groups video files by exact byte size and deletes duplicate copies based on folder priority (Performer `#--` > Studio > `zzMisc`).
 - **`deduplicate_qualities.py`**: Compares different quality versions of the same scene by stripping quality/release tags (e.g., `2160p`, `1080p`, `4K`, `H265`, `x264`), prioritizes keeping `1080p` copies, and removes others.
+- **`deduplicate_folders.py`**: Groups duplicate scene folder directories (using match keys like `site.YY.MM.DD`) under a parent path, ranks folder resolutions (preferring `1080p` over others), and recursively deletes redundant folders.
 
 ---
 
@@ -50,6 +51,11 @@ python deduplicate_exact.py --dir "<abe_directory_path>" [--dry-run]
 ### Quality-Based Deduplication
 ```powershell
 python deduplicate_qualities.py --dir "<abe_directory_path>" [--dry-run]
+```
+
+### Folder-Level Quality Deduplication
+```powershell
+python deduplicate_folders.py --dir "<adult_review_directory_path>" [--dry-run]
 ```
 
 ---
